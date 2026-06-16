@@ -1,27 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tend · Daily Stoic Practice</title>
+<meta name="description" content="A quiet daily Stoic practice. One quote a day from Marcus Aurelius, Seneca, or Epictetus, with a modern translation, an example, and a question to sit with. Free on Android.">
+<meta name="theme-color" content="#F5F0E8">
+<meta property="og:title" content="Tend · Daily Stoic Practice">
+<meta property="og:description" content="One quote a day from the Stoics. Modern translation. Private journal. Free.">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #F5F0E8;
+    --fg: #1A1A1A;
+    --muted: rgba(26,26,26,0.65);
+    --accent: #D4AF37;
+    --card: rgba(255,255,255,0.5);
+    --border: rgba(212,175,55,0.4);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A1A;
+      --fg: #F5F0E8;
+      --muted: rgba(245,240,232,0.65);
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(212,175,55,0.5);
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 80px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .wordmark {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin: 0 0 8px;
+  }
+  .leaf {
+    display: inline-block;
+    color: var(--accent);
+    transform: translateY(2px) rotate(-15deg);
+    margin-right: 6px;
+  }
+  .tagline {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0;
+    letter-spacing: 0.3px;
+  }
+  .hero-quote {
+    font-size: 19px;
+    line-height: 1.6;
+    font-style: italic;
+    text-align: center;
+    margin: 0 auto 14px;
+    max-width: 520px;
+  }
+  .hero-attribution {
+    text-align: center;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent);
+    margin: 0 0 56px;
+    letter-spacing: 0.3px;
+  }
+  section {
+    margin-bottom: 56px;
+  }
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+  p {
+    font-size: 17px;
+    line-height: 1.65;
+    margin: 0 0 16px;
+  }
+  .lead {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  ul.features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.features li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  ul.features li:last-child {
+    border-bottom: none;
+  }
+  ul.features li::before {
+    content: "·";
+    color: var(--accent);
+    font-weight: 700;
+    display: inline-block;
+    width: 14px;
+    margin-right: 4px;
+  }
+  .screenshots {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding: 4px 0 18px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .screenshots .shot {
+    flex: 0 0 auto;
+    width: 220px;
+    aspect-ratio: 9 / 19.5;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+    text-align: center;
+    padding: 12px;
+  }
+  .screenshots img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .cta {
+    text-align: center;
+    padding: 24px 0 8px;
+  }
+  .play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--fg);
+    color: var(--bg);
+    padding: 14px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    transition: opacity 0.15s ease;
+  }
+  .play-btn:hover { opacity: 0.85; }
+  .play-btn svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  .small {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    margin: 14px 0 0;
+  }
+  .who {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-top: 8px;
+  }
+  .who p { font-size: 16px; }
+  .signature {
+    font-style: italic;
+    color: var(--accent);
+    text-align: right;
+    margin-top: 12px;
+    font-size: 15px;
+  }
+  footer {
+    text-align: center;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--muted);
+    margin: 0 6px;
+  }
+  footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  @media (max-width: 480px) {
+    .container { padding: 40px 20px 60px; }
+    .wordmark { font-size: 32px; }
+    .hero-quote { font-size: 17px; }
+    p, ul.features li { font-size: 15px; }
+    .screenshots .shot { width: 180px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
 
-Tend
-A quiet daily Stoic practice
-One quote a day from Marcus Aurelius, Seneca, or Epictetus, translated into plain modern English, with a real-world example, a question to sit with, and a private place to write back.
-Join the closed test
-Android · free · currently in closed testing on Google Play
-A DAY IN TEND
-"Of human life, the time is a point; the substance flowing, the perceptions dull, the body putrescent, the soul a whirl, fortune hard to predict, fame undefined. What then is there that can guide a man? One thing and only one: philosophy."
-Today's reading · Marcus Aurelius, Meditations 2.17
-THE TRANSLATION
-Marcus catalogs how unreliable everything is. Almost nothing you might want to use as a compass is stable enough to navigate by. Then he names the one thing that is: the inner practice. Everything else moves. The practice doesn't have to.
-THE REFLECTION
-What in your life has come loose lately that you used to count on for steadiness? What's the inner practice that's still steady under it all?
-No streaks. No badges. No audience.
-Tend is the opposite of an engagement app. It's a place to pause for two minutes, read a hard-won idea from someone who's been gone two thousand years, and write a short reflection of your own. Then it lets you leave.
-What you get
-	•	One quote per day, delivered at the time you choose, with a home screen widget
-	•	A modern translation, a contemporary example, and a prompt to reflect on
-	•	A private journal: multiple dated entries per quote, searchable, exportable
-	•	A full year of entries, 365 quotes, no day-to-day recycling
-	•	Save quotes that resonate and find them again in the Archive
-	•	A year from now, today's reflection surfaces back on the same date
-Private by design
-Your reflections never leave your phone. No account, no cloud syncing of your writing, no analytics trackers, no ads. The examples are about traffic, work meetings, group chats, and the people you live with, not togas and emperors. Built for people who'd find a 400-page philosophy book intimidating but want the wisdom inside it.
-Tend · built with public-domain Stoic sources and original modern interpretations
-Privacy policy · Contact
-© 2026 Tend
+  <header>
+    <h1 class="wordmark"><span class="leaf">&#10086;</span>Tend</h1>
+    <p class="tagline">Ancient wisdom, modern practice.</p>
+  </header>
+
+  <p class="hero-quote">"You have power over your mind, not outside events. Realize this, and you will find strength."</p>
+  <p class="hero-attribution">Marcus Aurelius, Meditations 12.22</p>
+
+  <section>
+    <p class="lead">Tend is a small Android app for daily Stoic practice. Each day, one quote from Marcus Aurelius, Seneca, or Epictetus, translated into plain modern English, with a real-world example and a question to sit with.</p>
+    <p>No streaks. No badges. No audience. A quiet place to read a hard-won idea and write a short reflection of your own. Your journal stays on your phone, nothing leaves your device, and no account is required.</p>
+  </section>
+
+  <section>
+    <h2>What you get</h2>
+    <ul class="features">
+      <li>One quote per day, delivered at the time you choose</li>
+      <li>A modern translation, a contemporary example, and a prompt to reflect on</li>
+      <li>A home screen widget so today's quote sits where you can see it</li>
+      <li>Save quotes that resonate, find them again in the Archive</li>
+      <li>A year from now, the reflection you wrote today surfaces back on the same calendar date</li>
+      <li>Pause notifications for a day, a week, or longer, when you need quiet</li>
+      <li>A full year of curated entries, no day-to-day recycling</li>
+      <li>Fully private. No accounts, no cloud syncing of your writing, no audience</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>See it</h2>
+    <div class="screenshots">
+      <div class="shot">Today screen<br>(add screenshot)</div>
+      <div class="shot">Widget on home screen<br>(add screenshot)</div>
+      <div class="shot">Journal tab<br>(add screenshot)</div>
+      <div class="shot">Archive<br>(add screenshot)</div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <a class="play-btn" href="https://play.google.com/store/apps/details?id=com.kevintc91.tend">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3.609 1.814L13.792 12 3.609 22.186a.996.996 0 0 1-.609-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.198 12l2.5-2.491zM5.864 2.658L16.802 8.99l-2.302 2.302-8.636-8.634z"/>
+      </svg>
+      Get it on Google Play
+    </a>
+    <p class="small">Free. Android only for now. iOS planned.</p>
+  </section>
+
+  <section>
+    <h2>Who made this</h2>
+    <div class="who">
+      <p>Hi. I'd loved the Stoics for years but kept finding them easier to admire than to internalize. Tend is the bridge I built for myself: a quote a day, a plain translation, an example that fits. I hope it helps yours too.</p>
+      <p class="signature">&#10086; Kevin</p>
+    </div>
+  </section>
+
+  <footer>
+    <a href="https://kevintc91.github.io/tend-privacy/">Privacy</a> &middot;
+    <a href="mailto:tendadmin@gmail.com">Contact</a>
+    <p style="margin-top: 18px;">Made with care. May your practice be steady.</p>
+  </footer>
+
+</div>
+</body>
+</html>
