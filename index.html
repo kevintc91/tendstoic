@@ -1,217 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tend · A quiet daily Stoic practice</title>
-<meta name="description" content="One quote a day from Marcus Aurelius, Seneca, or Epictetus, in plain English, with a private place to write back. No streaks, no badges, no audience.">
-<meta property="og:title" content="Tend · A quiet daily Stoic practice">
-<meta property="og:description" content="One quote a day from the great Stoics, in plain English, with a private place to write back. No streaks, no badges, no audience.">
-<meta property="og:url" content="https://tendstoic.com/">
-<meta property="og:type" content="website">
-<link rel="canonical" href="https://tendstoic.com/">
-<style>
-  :root {
-    --cream: #F5F0E8;
-    --ink: #2B2823;
-    --stone: #6B645A;
-    --sage: #8A9A7B;
-    --gold: #B8923E;
-    --card: #FFFFFF;
-    --card-border: #E5DDD0;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --cream: #1A1A1A;
-      --ink: #EDE8DF;
-      --stone: #A39B8E;
-      --sage: #97A888;
-      --gold: #D4AF37;
-      --card: #242220;
-      --card-border: #3A362F;
-    }
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 0 24px; }
-  header { padding: 72px 0 48px; text-align: center; }
-  .leaf { width: 44px; height: 44px; margin: 0 auto 20px; display: block; }
-  h1 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 2.6rem;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-  }
-  .tagline {
-    color: var(--stone);
-    font-size: 1.15rem;
-    margin-top: 8px;
-  }
-  .lede {
-    margin-top: 28px;
-    font-size: 1.05rem;
-    text-align: left;
-  }
-  .cta-block { text-align: center; margin: 40px 0 8px; }
-  .cta {
-    display: inline-block;
-    background: var(--gold);
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.05rem;
-    padding: 14px 32px;
-    border-radius: 10px;
-  }
-  .cta:hover { filter: brightness(1.06); }
-  .cta-note {
-    display: block;
-    margin-top: 12px;
-    color: var(--stone);
-    font-size: 0.9rem;
-  }
-  section { padding: 36px 0; }
-  .entry-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 14px;
-    padding: 28px 28px 24px;
-  }
-  .entry-date {
-    color: var(--stone);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 14px;
-  }
-  blockquote {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.25rem;
-    font-style: italic;
-    line-height: 1.55;
-  }
-  .attribution {
-    margin-top: 14px;
-    color: var(--gold);
-    font-size: 0.95rem;
-  }
-  .entry-section-label {
-    margin-top: 22px;
-    color: var(--sage);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .entry-card p.body { margin-top: 6px; font-size: 0.98rem; color: var(--ink); }
-  h2 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 14px;
-  }
-  .quiet h2 { text-align: center; }
-  .quiet .no-list {
-    text-align: center;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.3rem;
-    color: var(--ink);
-    margin-bottom: 18px;
-  }
-  .quiet p { color: var(--stone); }
-  .features { list-style: none; }
-  .features li {
-    padding: 10px 0 10px 28px;
-    position: relative;
-    color: var(--ink);
-  }
-  .features li::before {
-    content: "·";
-    color: var(--gold);
-    font-weight: 700;
-    font-size: 1.6rem;
-    position: absolute;
-    left: 8px;
-    top: 2px;
-  }
-  .privacy { color: var(--stone); font-size: 0.98rem; }
-  .privacy strong { color: var(--ink); }
-  footer {
-    border-top: 1px solid var(--card-border);
-    margin-top: 24px;
-    padding: 32px 0 48px;
-    text-align: center;
-    color: var(--stone);
-    font-size: 0.88rem;
-  }
-  footer a { color: var(--stone); }
-</style>
-</head>
-<body>
 
-<div class="wrap">
-
-  <header>
-    <svg class="leaf" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M24 42 C24 30 24 22 24 14" stroke="var(--gold)" stroke-width="2.4" stroke-linecap="round"/>
-      <path d="M24 14 C24 6 30 4 36 6 C36 16 30 20 24 20 C18 20 12 16 12 6 C18 4 24 6 24 14 Z" fill="var(--sage)" opacity="0.9"/>
-    </svg>
-    <h1>Tend</h1>
-    <p class="tagline">A quiet daily Stoic practice</p>
-    <p class="lede">One quote a day from Marcus Aurelius, Seneca, or Epictetus, translated into plain modern English, with a real-world example, a question to sit with, and a private place to write back.</p>
-    <div class="cta-block">
-      <a class="cta" href="https://play.google.com/apps/testing/com.kevintc91.tend">Join the closed test</a>
-      <span class="cta-note">Android · free · currently in closed testing on Google Play</span>
-    </div>
-  </header>
-
-  <section>
-    <div class="entry-card">
-      <p class="entry-date">A day in Tend</p>
-      <blockquote>"Of human life, the time is a point; the substance flowing, the perceptions dull, the body putrescent, the soul a whirl, fortune hard to predict, fame undefined. What then is there that can guide a man? One thing and only one: philosophy."</blockquote>
-      <p class="attribution">Today's reading · Marcus Aurelius, Meditations 2.17</p>
-      <p class="entry-section-label">The translation</p>
-      <p class="body">Marcus catalogs how unreliable everything is. Almost nothing you might want to use as a compass is stable enough to navigate by. Then he names the one thing that is: the inner practice. Everything else moves. The practice doesn't have to.</p>
-      <p class="entry-section-label">The reflection</p>
-      <p class="body">What in your life has come loose lately that you used to count on for steadiness? What's the inner practice that's still steady under it all?</p>
-    </div>
-  </section>
-
-  <section class="quiet">
-    <p class="no-list">No streaks. No badges. No audience.</p>
-    <p>Tend is the opposite of an engagement app. It's a place to pause for two minutes, read a hard-won idea from someone who's been gone two thousand years, and write a short reflection of your own. Then it lets you leave.</p>
-  </section>
-
-  <section>
-    <h2>What you get</h2>
-    <ul class="features">
-      <li>One quote per day, delivered at the time you choose, with a home screen widget</li>
-      <li>A modern translation, a contemporary example, and a prompt to reflect on</li>
-      <li>A private journal: multiple dated entries per quote, searchable, exportable</li>
-      <li>A full year of entries, 365 quotes, no day-to-day recycling</li>
-      <li>Save quotes that resonate and find them again in the Archive</li>
-      <li>A year from now, today's reflection surfaces back on the same date</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Private by design</h2>
-    <p class="privacy"><strong>Your reflections never leave your phone.</strong> No account, no cloud syncing of your writing, no analytics trackers, no ads. The examples are about traffic, work meetings, group chats, and the people you live with, not togas and emperors. Built for people who'd find a 400-page philosophy book intimidating but want the wisdom inside it.</p>
-  </section>
-
-  <footer>
-    <p>Tend · built with public-domain Stoic sources and original modern interpretations</p>
-    <p style="margin-top:8px"><a href="https://kevintc91.github.io/tend-privacy/">Privacy policy</a> · <a href="mailto:tendadmin@gmail.com">Contact</a></p>
-    <p style="margin-top:8px">&copy; 2026 Tend</p>
-  </footer>
-
-</div>
-
-</body>
-</html>
+Tend
+A quiet daily Stoic practice
+One quote a day from Marcus Aurelius, Seneca, or Epictetus, translated into plain modern English, with a real-world example, a question to sit with, and a private place to write back.
+Join the closed test
+Android · free · currently in closed testing on Google Play
+A DAY IN TEND
+"Of human life, the time is a point; the substance flowing, the perceptions dull, the body putrescent, the soul a whirl, fortune hard to predict, fame undefined. What then is there that can guide a man? One thing and only one: philosophy."
+Today's reading · Marcus Aurelius, Meditations 2.17
+THE TRANSLATION
+Marcus catalogs how unreliable everything is. Almost nothing you might want to use as a compass is stable enough to navigate by. Then he names the one thing that is: the inner practice. Everything else moves. The practice doesn't have to.
+THE REFLECTION
+What in your life has come loose lately that you used to count on for steadiness? What's the inner practice that's still steady under it all?
+No streaks. No badges. No audience.
+Tend is the opposite of an engagement app. It's a place to pause for two minutes, read a hard-won idea from someone who's been gone two thousand years, and write a short reflection of your own. Then it lets you leave.
+What you get
+	•	One quote per day, delivered at the time you choose, with a home screen widget
+	•	A modern translation, a contemporary example, and a prompt to reflect on
+	•	A private journal: multiple dated entries per quote, searchable, exportable
+	•	A full year of entries, 365 quotes, no day-to-day recycling
+	•	Save quotes that resonate and find them again in the Archive
+	•	A year from now, today's reflection surfaces back on the same date
+Private by design
+Your reflections never leave your phone. No account, no cloud syncing of your writing, no analytics trackers, no ads. The examples are about traffic, work meetings, group chats, and the people you live with, not togas and emperors. Built for people who'd find a 400-page philosophy book intimidating but want the wisdom inside it.
+Tend · built with public-domain Stoic sources and original modern interpretations
+Privacy policy · Contact
+© 2026 Tend
